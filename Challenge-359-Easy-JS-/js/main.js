@@ -27,7 +27,7 @@ function Sequencer() {
 
         }
 
-        this.sequencebase10 = converttobase10();
+        this.sequencebase10 = this.converttobase10();
         this.currentNumber++;
     }
     this.sequencesComplement = function (old) {
@@ -45,8 +45,16 @@ function Sequencer() {
         return rhsArray;
     }
     this.converttobase10 = function () {
-
-
+        let res = "";
+        for (let i = 0; i < this.sequence.length; i++) {
+            if (this.sequence[i] === false) {
+                res = res + 0;
+            }
+            else {
+                res = res + 1;
+            }
+        }
+        return res;
     }
    
 
@@ -63,6 +71,6 @@ processBTN.onclick = function () {
 
     process();
     display_n.innerText = sequencer.currentNumber;
-    display.innerText = sequencer.sequence;
+    display.innerText = sequencer.sequencebase10;
 }
 
